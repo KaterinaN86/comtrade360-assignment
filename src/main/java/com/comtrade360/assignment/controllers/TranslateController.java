@@ -22,9 +22,7 @@ public class TranslateController {
         this.translationService = translationService;
         this.translationRepository = translationRepository;
     }
-
-
-
+    
     @RequestMapping(value="/translate/all")
     public String getAllTranslations(Model model){
 

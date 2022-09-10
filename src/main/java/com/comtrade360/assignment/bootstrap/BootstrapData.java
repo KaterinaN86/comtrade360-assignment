@@ -28,7 +28,7 @@ public class BootstrapData implements CommandLineRunner {
     translations.add(new Translation(2,"mk","Hello World", "Здраво Свету"));
     translations.add(new Translation(3,"sr","Hello World", "Здраво Свете"));
     translations.add(new Translation(4,"hr","Hello World", "Pozdrav Svijete"));
-    translations.add(new Translation(5,"bs","Hello World", "Zdravo Svijete"));
+    translations.add(new Translation(5,"bg","Hello World", "Здравей свят"));
     translations.add(new Translation(6,"sl","Hello World", "Živjo Svet"));
     translations.add(new Translation(7,"de","Hello World", "Hallo Welt"));
     translations.add(new Translation(8,"fr","Hello World", "Bonjour le monde"));
