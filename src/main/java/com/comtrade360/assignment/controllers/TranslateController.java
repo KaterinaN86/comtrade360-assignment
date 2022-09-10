@@ -23,18 +23,14 @@ public class TranslateController {
         this.translationRepository = translationRepository;
     }
 
-    @GetMapping("/translate")
-    public  String translate(@RequestParam(name="language", defaultValue = "en") String language){
 
-        return translationService.getTranslation(language, "Hello World");
-    }
 
     @RequestMapping(value="/translate/all")
     public String getAllTranslations(Model model){
 
         model.addAttribute("translations", translationRepository.findAll());
 
-                return "translations/list";
+        return "translations/list";
     }
 
     @GetMapping (value="/translate/add")
@@ -60,7 +56,7 @@ public class TranslateController {
         //saving the instance
         translationRepository.save(translation);
 
-    return "translations/insert_success";
+        return "translations/insert_success";
     }
 
 
