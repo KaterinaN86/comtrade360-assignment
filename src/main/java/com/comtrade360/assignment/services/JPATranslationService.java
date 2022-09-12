@@ -3,8 +3,9 @@ package com.comtrade360.assignment.services;
 import com.comtrade360.assignment.data.Translation;
 import com.comtrade360.assignment.repositories.TranslationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-//@Service
+@Service
 public class JPATranslationService implements TranslationService{
 
     @Autowired
