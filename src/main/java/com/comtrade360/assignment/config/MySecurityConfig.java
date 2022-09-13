@@ -10,10 +10,19 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 
+/**
+ * Configuration class for security
+ */
 @Configuration
 public class MySecurityConfig {
 
-
+    /**
+     * Creating bean for filterChain method. Defining authority roles for endpoints.
+     *
+     * @param http
+     * @return
+     * @throws Exception
+     */
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.authorizeRequests()
@@ -39,13 +48,21 @@ public class MySecurityConfig {
         return new BCryptPasswordEncoder();
     }
 
+    /**
+     * Defines user details using InMemoryUserDetailsManager object
+     *
+     * @param passwordEncoder
+     * @return
+     */
     @Bean
     public UserDetailsService userDetailsService(PasswordEncoder passwordEncoder) {
         InMemoryUserDetailsManager manager = new InMemoryUserDetailsManager();
+        //defining USER_ROLE data
         manager.createUser(User.withUsername("user")
                 .password(passwordEncoder.encode("userPass"))
                 .roles("USER")
                 .build());
+        //defining ADMIN_ROLE data
         manager.createUser(User.withUsername("admin")
                 .password(passwordEncoder.encode("adminPass"))
                 .roles("USER", "ADMIN")

@@ -1,9 +1,6 @@
 package com.comtrade360.assignment.services;
 
-
 import com.comtrade360.assignment.data.Translation;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
 import java.util.Optional;
@@ -16,7 +13,8 @@ import java.util.Optional;
 public interface TranslationService {
     /**
      * Takes the ISO code for a language and translates the original message
-     * @param language (String made up of the ISO code for a certain language
+     *
+     * @param language        (String made up of the ISO code for a certain language
      * @param originalMessage (String with the text to be translated)
      * @return (String wit translated text)
      */
@@ -24,17 +22,31 @@ public interface TranslationService {
 
     /**
      * Adds new translation entity
-      * @param translation (Translation object)
+     *
+     * @param translation (Translation object)
      */
     void addTranslation(Translation translation);
 
     /**
      * Searches for a translation with a certain id
+     *
      * @param id (int representing the id of the entity we want to find)
-     * @return
+     * @return Translation object or null
      */
     Optional<Translation> findById(int id);
+
+    /**
+     * Returns number of translations in our database table
+     *
+     * @return number of all translations
+     */
     int countTranslations();
+
+    /**
+     * Returns all entries from our table
+     *
+     * @return list of translations
+     */
     List<Translation> getAll();
 
 }

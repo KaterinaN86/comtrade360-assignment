@@ -9,6 +9,9 @@ import org.springframework.web.bind.annotation.RestController;
 //hods API resources, like endpoints
 //communicates with Service layer that holds business logic
 
+/**
+ * RestController class with methods for displaying message and translating text by language
+ */
 @RestController
 public class TranslateRestController {
 
@@ -17,25 +20,38 @@ public class TranslateRestController {
 
     //initializing the interface bean. With this we enable different implementations of the interface
     //depending on the active profile
+
+    /**
+     * Constructor
+     *
+     * @param translationService
+     */
     public TranslateRestController(TranslationService translationService) {
 
         this.translationService = translationService;
     }
 
-     @GetMapping("/hello-rest")
-    public String helloWorld(){
+    /**
+     * Handles hello-rest endpoint acces by showing Hello World message
+     *
+     * @return
+     */
+    @GetMapping("/hello-rest")
+    public String helloWorld() {
         return "Hello World";
     }
 
     /**
      * translating original message "Hello World" by language
+     *
      * @param language (String with language ISO code)
      * @return (String with translated message)
      */
     @GetMapping("/translate")
-    public  String translate(@RequestParam(name="language", defaultValue = "en") String language){
+    public String translate(@RequestParam(name = "language", defaultValue = "en") String language,
+                            @RequestParam(name = "originalMessage", defaultValue = "Hello World") String originalMessage) {
 
-        return translationService.getTranslation(language, "Hello World");
+        return translationService.getTranslation(language, originalMessage);
     }
 
 

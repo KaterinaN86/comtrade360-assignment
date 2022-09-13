@@ -9,6 +9,12 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface TranslationRepository extends JpaRepository<Translation, Integer> {
 
+    /**
+     * Persists findByLanguageAndOriginalMessage method
+     * @param language
+     * @param originalMessage
+     * @return
+     */
     Translation findByLanguageAndOriginalMessage(String language, String originalMessage);
 
 

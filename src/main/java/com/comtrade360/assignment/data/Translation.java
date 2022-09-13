@@ -6,29 +6,47 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 //mapping the model to our database
+
+/**
+ * Entity class for translation model
+ */
 @Entity(name = "translation")
 public class Translation {
 
     @Id
     @GeneratedValue
     private Integer id;
-    @Column(name="language")
+    @Column(name = "language")
     private String language;
-    @Column(name="original_message")
+    @Column(name = "original_message")
     private String originalMessage;
-    @Column(name="translated_message")
+    @Column(name = "translated_message")
     private String translatedMessage;
 
     //empty constructor is necessary for JPA
+
+    /**
+     * Empty constructor
+     */
     public Translation() {
     }
 
+    /**
+     * Constructor
+     *
+     * @param id
+     * @param language
+     * @param originalMessage
+     * @param translatedMessage
+     */
     public Translation(Integer id, String language, String originalMessage, String translatedMessage) {
         this.id = id;
         this.language = language;
         this.originalMessage = originalMessage;
         this.translatedMessage = translatedMessage;
     }
+
+    //Getters and setters
 
     public Integer getId() {
         return id;
@@ -62,6 +80,12 @@ public class Translation {
         this.translatedMessage = translatedMessage;
     }
 
+    /**
+     * Overriding equals method in Object to prevent memory leakage
+     *
+     * @param o
+     * @return
+     */
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -72,11 +96,21 @@ public class Translation {
         return id != null ? id.equals(that.id) : that.id == null;
     }
 
+    /**
+     * Overriding hashCode method in Object to prevent memory leakage
+     *
+     * @return
+     */
     @Override
     public int hashCode() {
         return id != null ? id.hashCode() : 0;
     }
 
+    /**
+     * Overriding toString method for better display of values for class fields
+     *
+     * @return
+     */
     @Override
     public String toString() {
         return "Translation{" +
