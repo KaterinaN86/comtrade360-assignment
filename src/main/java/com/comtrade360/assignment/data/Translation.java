@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
+//mapping the model to our database
 @Entity(name = "translation")
 public class Translation {
 
@@ -18,6 +19,7 @@ public class Translation {
     @Column(name="translated_message")
     private String translatedMessage;
 
+    //empty constructor is necessary for JPA
     public Translation() {
     }
 

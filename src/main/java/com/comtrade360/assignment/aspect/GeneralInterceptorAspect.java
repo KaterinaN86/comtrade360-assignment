@@ -20,12 +20,12 @@ public class GeneralInterceptorAspect {
 
     @Before("loggingPointcut()")
     public void before(JoinPoint joinPoint){
-            log.info("Before controller method invoked:"+ joinPoint.getSignature() );
+            log.info("Before translateController method invoked:"+ joinPoint.getSignature() );
     }
 
     @After("loggingPointcut()")
     public void after(JoinPoint joinPoint){
-        log.info("After controller method invoked:"+ joinPoint.getSignature() );
+        log.info("After translateController method invoked:"+ joinPoint.getSignature() );
     }
 
 }

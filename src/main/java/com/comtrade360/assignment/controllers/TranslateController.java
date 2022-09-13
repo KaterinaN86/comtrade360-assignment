@@ -13,20 +13,19 @@ import org.springframework.web.bind.annotation.*;
 @Controller
 public class TranslateController {
 
+    //dependency injection for bean TranslationService
     @Autowired
     private final TranslationService translationService;
-    @Autowired
-    private final TranslationRepository translationRepository;
 
-    public TranslateController(TranslationService translationService, TranslationRepository translationRepository) {
+    //constructor
+    public TranslateController(TranslationService translationService) {
         this.translationService = translationService;
-        this.translationRepository = translationRepository;
     }
     
     @RequestMapping(value="/translate/all")
     public String getAllTranslations(Model model){
 
-        model.addAttribute("translations", translationRepository.findAll());
+        model.addAttribute("translations", translationService.getAll());
 
         return "translations/list";
     }
@@ -34,26 +33,34 @@ public class TranslateController {
     @GetMapping (value="/translate/add")
     public String insertTranslation(Model model){
 
+        //adds user input to our model
         TranslationModel translationModel = new TranslationModel();
-
         model.addAttribute("translationModel",translationModel);
+
+        //shows Thymeleaf template
         return "translations/insert";
     }
 
+    //passing the model for user data as a parameter and adding new translation entity to our database
     @PostMapping(value="/translate/save")
     public String submitTranslation(@ModelAttribute ("translationModel") TranslationModel translationModel)
     {
         //the new id will be equal to the number of data entries already in the database + 1
-        int newId = (int) translationRepository.count()+1;
+        int newId = translationService.countTranslations()+1;
+
         //checking for existing entities with same key
-        if(translationRepository.findById(newId).isPresent())
-            translationRepository.deleteById(newId);
+        while(translationService.findById(newId).isPresent()) {
+            //while there is such entry, we increase the new id by one
+            newId++;
+        }
         //using the model object (from user input) to create an instance from the model that will be saved in database
         Translation translation = new Translation(newId, translationModel.getLanguage(),
                 "Hello World", translationModel.getTranslatedMessage());
-        //saving the instance
-        translationRepository.save(translation);
 
+        //making a service all and passing the model instance
+        translationService.addTranslation(translation);
+
+        //showing Thymeleaf template
         return "translations/insert_success";
     }
 

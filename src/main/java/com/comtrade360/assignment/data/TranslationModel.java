@@ -1,7 +1,9 @@
 package com.comtrade360.assignment.data;
 
+//Simple class for model implementation of user input
 public class TranslationModel {
 
+    //private fields
     private String language;
     private String translatedMessage;
 
@@ -13,6 +15,7 @@ public class TranslationModel {
         this.translatedMessage = translatedMessage;
     }
 
+    // getters and setters
     public String getLanguage() {
         return language;
     }

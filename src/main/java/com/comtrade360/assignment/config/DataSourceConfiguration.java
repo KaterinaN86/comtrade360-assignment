@@ -18,7 +18,7 @@ public class DataSourceConfiguration {
 
     @Bean
     @Primary
-    @ConfigurationProperties("spring.datasource-psql")
+    @ConfigurationProperties("spring.datasource")
 public HikariDataSource hikariDataSource(){
     return DataSourceBuilder.create().type(HikariDataSource.class).build();
 }

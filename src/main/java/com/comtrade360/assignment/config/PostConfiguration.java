@@ -8,7 +8,7 @@ import org.springframework.web.client.RestTemplate;
 @Configuration
 public class PostConfiguration {
 
-    //making a singleton bean so we can inject it with @Autowired
+    //making a singleton bean that we can inject with @Autowired
     @Bean
     public RestTemplate restTemplate (RestTemplateBuilder builder){
         return builder.build();
