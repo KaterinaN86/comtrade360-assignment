@@ -12,8 +12,8 @@ RUN mvn clean package spring-boot:repackage
 RUN mkdir /app
 
 #cpoies .jar to app dir
-RUN cp /build/target/assignment-0.0.1-SNAPSHOT.jar /app/
+RUN cp /build/target/assignment-app.jar /app/
 
 EXPOSE 8080
 # runs the app
-CMD ["java", "-jar", "/app/assignment-0.0.1-SNAPSHOT.jar" , "-Dspring.profile.active=default"]
+ENTRYPOINT ["java", "-jar", "/app/assignment-app.jar"]

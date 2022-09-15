@@ -11,7 +11,6 @@ public class HelloHTMLController {
 
     /**
      * Handles secured hello endpoint
-     *
      * @return (shows thymeleaf template)
      */
     @RequestMapping("/hello")

@@ -34,7 +34,11 @@ public class TranslateController {
      */
     @RequestMapping(value = "/translate/all")
     public String getAllTranslations(Model model) {
+        //if data source is external APi
+        if (translationService.getAll() == null)
+            return "translations/list_rejected";
 
+        //adding all translations from database to our model object
         model.addAttribute("translations", translationService.getAll());
         return "translations/list";
     }
@@ -47,6 +51,9 @@ public class TranslateController {
      */
     @GetMapping(value = "/translate/add")
     public String insertTranslation(Model model) {
+        //if data source is external APi
+        if (translationService.getAll() == null)
+            return "translations/insert_rejected";
 
         //adds user input to our model
         TranslationModel translationModel = new TranslationModel();

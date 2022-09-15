@@ -27,7 +27,6 @@ public class TranslateRestController {
      * @param translationService
      */
     public TranslateRestController(TranslationService translationService) {
-
         this.translationService = translationService;
     }
 
