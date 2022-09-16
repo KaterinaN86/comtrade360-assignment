@@ -34,9 +34,7 @@ public class BootstrapData implements CommandLineRunner {
      */
     @Override
     public void run(String... args) throws Exception {
-
         Set<Translation> translations = new HashSet<>();
-
         translations.add(new Translation(1, "en", "Hello World", "Helo World"));
         translations.add(new Translation(2, "mk", "Hello World", "Здраво Свету"));
         translations.add(new Translation(3, "sr", "Hello World", "Здраво Свете"));
