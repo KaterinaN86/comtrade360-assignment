@@ -36,7 +36,6 @@ class TranslateRestControllerTest {
     void setUp() {
         translationsSetup = new TranslationsSetup();
         translationList = translationsSetup.getTranslationList();
-        when(translationService.getTranslation(any(String.class),any(String.class))).thenReturn("Hello World!");
     }
 
 
