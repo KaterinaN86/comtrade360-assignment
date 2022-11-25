@@ -18,12 +18,20 @@ import java.util.Optional;
  * Implementation of TranslationService interface methods by using database operations
  */
 public class JPATranslationService implements TranslationService {
-
     /**
      * Dependency injection for TranslationRepository bean
      */
     @Autowired
     private TranslationRepository translationRepository;
+
+    /**
+     * constructor
+     *
+     * @param translationRepository
+     */
+    public JPATranslationService(TranslationRepository translationRepository) {
+        this.translationRepository = translationRepository;
+    }
 
     //getters and setters
     public TranslationRepository getTranslationRepository() {
@@ -50,7 +58,6 @@ public class JPATranslationService implements TranslationService {
 
         //if request is successfully resolved
         if (translation != null) {
-
             //we return translated message
             return translation.getTranslatedMessage();
         }
@@ -77,7 +84,6 @@ public class JPATranslationService implements TranslationService {
      */
     @Override
     public Optional<Translation> findById(int id) {
-
         return translationRepository.findById(id);
     }
 
@@ -100,6 +106,4 @@ public class JPATranslationService implements TranslationService {
     public List<Translation> getAll() {
         return translationRepository.findAll();
     }
-
-
 }

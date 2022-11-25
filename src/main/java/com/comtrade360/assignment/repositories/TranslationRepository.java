@@ -16,6 +16,4 @@ public interface TranslationRepository extends JpaRepository<Translation, Intege
      * @return
      */
     Translation findByLanguageAndOriginalMessage(String language, String originalMessage);
-
-
 }

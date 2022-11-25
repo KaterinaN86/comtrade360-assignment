@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
  */
 @Controller
 public class TranslateController {
-
     //dependency injection for bean TranslationService
     @Autowired
     private final TranslationService translationService;
@@ -83,13 +82,10 @@ public class TranslateController {
         //using the model object (from user input) to create an instance from the model that will be saved in database
         Translation translation = new Translation(newId, translationModel.getLanguage(),
                 "Hello World", translationModel.getTranslatedMessage());
-
-        //making a service all and passing the model instance
+        //making a service call and passing the model instance
         translationService.addTranslation(translation);
-
         //showing Thymeleaf template
         return "translations/insert_success";
     }
-
 
 }

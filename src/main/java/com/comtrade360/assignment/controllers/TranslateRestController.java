@@ -31,7 +31,7 @@ public class TranslateRestController {
     }
 
     /**
-     * Handles hello-rest endpoint acces by showing Hello World message
+     * Handles hello-rest endpoint access by showing Hello World message
      *
      * @return
      */

@@ -51,8 +51,6 @@ public class BootstrapData implements CommandLineRunner {
             //persisting data for every element
             translationRepository.save(translation);
         }
-        System.out.println("Number of languages: " + translationRepository.count());
 
     }
-
 }
