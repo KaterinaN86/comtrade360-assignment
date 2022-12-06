@@ -1,4 +1,4 @@
-Simple application for translating "Hello World" message
+Simple application for translating "Hello World" text message
 ==========================================================================
 ## Spring-boot application that implements methods for translating 'Hello World' message in several languages using an external API, in memory H2 database and POSTGRESQL.
 
