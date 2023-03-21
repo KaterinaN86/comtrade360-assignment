@@ -87,3 +87,4 @@ GRANT ALL PRIVILEGES ON DATABASE translate TO postgres;
 - Make sure the active profile is NOT set to **api** in order to use Postgresql as data source.
 
 - Data source properties are defined in the **application.properties** file. Uncomment lines for properties for **postgres** (after line ```#setting up postgres datasource```) and comment out properties for in-memory **H2** database (after line ```#setting up H2 datasource```).
+
