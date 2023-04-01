@@ -1,0 +1,8 @@
+version: '3'
+
+services:
+  assingment:
+    image: assignment
+    container_name: assignment
+    ports:
+      - 8084:8084

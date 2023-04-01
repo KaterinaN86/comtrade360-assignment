@@ -1,29 +1,23 @@
-pipeline {
-  agent any
+node {
+def WORKSPACE = "/var/lib/jenkins/workspace/springboot-demo-deploy"
+def dockerImageTag = "assignment:latest"
   
-  environment {
-    DOCKERHUB_CREDENTIALS = credentials('dockerhub_credentials')
-  }
-  stages {
-    stage('Build') {
-      steps {
-        sh 'docker build -t katerina86/assignment:latest .'
+  try{
+       stage('Clone Repo') {
+        // for display purposes
+        // Get some code from a GitHub repository
+        git url: 'https://github.com/KaterinaN86/comtrade360-assignment.git',
+            credentialsId: 'my_credentials',
+            branch: 'main'
+     }    
+       stage('Deploy docker'){
+              echo "Docker Image Tag Name: ${dockerImageTag}"
+              sh "docker stop assignment || true && docker rm assignment || true"
+              sh "docker run --name assignment -d -p 8084:8084 assignment:latest"
       }
-    }
-    stage('Login') {
-      steps {
-        sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
-      }
-    }
-    stage('Push') {
-      steps {
-        sh 'docker push katerina86/assignment:latest'
-      }
-    }
-  }
-  post {
-    always {
-      sh 'docker logout'
-    }
-  }
+}catch(e){
+    currentBuild.result = "FAILED"
+    throw e
+}
+ 
 }
